@@ -159,6 +159,13 @@ p {
 }
 
 /* ===== Forms ===== */
+#lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;      /* This creates the uniform vertical space you want */
+  margin-top: 2rem;  /* Adds space between the text above and the first field */
+}
+
 input,
 button {
   width: 100%;
@@ -168,15 +175,16 @@ button {
   border: 1px solid #93c5fd; /* Light blue border */
   color: #1e3a8a; /* Dark blue text */
   font-size: 1rem;
+  display: block; /* Ensures they behave as full-width blocks */
 }
 
 input::placeholder {
-  color: #64748b; /* Muted placeholder */
+  color: #64748b; 
 }
 
 input:focus {
   outline: none;
-  border-color: #3b82f6; /* Bright blue on focus */
+  border-color: #3b82f6; 
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
 }
 
