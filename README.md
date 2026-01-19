@@ -6,4 +6,4 @@ A Node.js Express server with environment-based configuration.
 
 1. **Install dependencies:**
    ```bash
-   npm install
+   npm install"# AiTrainingSite" 
