@@ -34,3 +34,37 @@ function initCarousel() {
 }
 
 document.addEventListener('DOMContentLoaded', initCarousel);
+
+document.getElementById('lead-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = {
+    name: e.target.querySelector('input[placeholder="Name"]').value,
+    email: e.target.querySelector('input[placeholder="Email"]').value
+  };
+
+  const submitBtn = e.target.querySelector('button');
+  submitBtn.innerText = 'Processing...';
+
+  try {
+    const response = await fetch('/api/leads/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert('Thank you! Your interest has been registered.');
+      e.target.reset();
+    } else {
+      alert(result.error || 'Something went wrong.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Could not connect to the server.');
+  } finally {
+    submitBtn.innerText = '👉 Register My Interest';
+  }
+});
