@@ -723,3 +723,55 @@ footer {
   font-size: 0.875rem;
   background: #ffffff;
 }
+
+/* Modal Styles, Alert styling */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 64, 175, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+  transform: translateY(0);
+}
+
+.modal-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.modal-content h3 {
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+  font-family: 'Inter', sans-serif; /* Keep consistent with site */
+}
+
+.modal-content p {
+  color: #64748b;
+  margin-bottom: 2rem;
+}
