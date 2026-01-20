@@ -272,55 +272,106 @@ input:focus {
 
 
 
-/* ==========================================================================
-   3. PAGE SECTIONS (Hero, Why, Trainer, Footer)
-   ========================================================================== */
+/* =========================================
+   HERO SECTION (Updated for Premium Look)
+   ========================================= */
 
-/* Hero Section */
 .section-hero {
-  background-image: url("../image/hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* 1. Visual Background: Deep Mesh Gradient */
+  background-color: #0f172a; /* Dark Slate fallback */
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(222, 47%, 11%, 1) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, hsla(210, 100%, 25%, 0.4) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, hsla(260, 40%, 15%, 1) 0, transparent 50%);
+  
   position: relative;
-  padding-top: 12rem;
-  padding-bottom: 12rem;
+  padding-top: 10rem; /* Adjusted spacing */
+  padding-bottom: 10rem;
   text-align: center;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
-  z-index: 1;
+  min-height: 85vh; /* Slightly taller */
+  overflow: hidden;
 }
 
+/* Add a subtle grid pattern overlay for texture */
 .section-hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
   z-index: 0;
   pointer-events: none;
 }
 
 .container-hero {
-  max-width: 70rem;
+  max-width: 64rem; /* Slightly narrower for better reading focus */
   margin: 0 auto;
   z-index: 1;
+  position: relative;
+  padding: 0 1.5rem;
 }
 
-/* Hero Sub-headline Styling */
+/* 2. Typography Hierarchy */
+.section-hero h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(3rem, 6vw, 5rem); /* Larger, more impact */
+  font-weight: 800; /* Extra Bold */
+  line-height: 1.1;
+  letter-spacing: -0.03em; /* Tighter tracking for modern look */
+  text-transform: none; /* Removed uppercase for a more human/premium feel */
+  margin-bottom: 2rem !important;
+  
+  /* Subtle text gradient to make it pop against dark bg */
+  background: linear-gradient(to right, #ffffff, #bfdbfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .hero-subtext {
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  color: #e0f2fe; /* Light blue to match h1 */
-  font-weight: 400;
-  max-width: 800px;
-  margin: 0 auto 3rem auto; /* 3rem bottom margin creates the gap to the button */
-  line-height: 1.5;
-  opacity: 0.9;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: #94a3b8; /* Soft slate blue-grey */
+  font-weight: 300; /* Light weight */
+  letter-spacing: 0.03em; /* Slightly increased spacing */
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 3.5rem auto;
 }
 
-.section-hero .cta-button { margin-top: 1rem; }
+/* 3. Premium CTA Button */
+.section-hero .cta-button {
+  display: inline-block;
+  padding: 1.25rem 2.75rem; /* Larger click area */
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: #3b82f6; /* Bright Blue */
+  color: #ffffff;
+  border-radius: 0.75rem; /* 12px rounded corners */
+  text-decoration: none;
+  
+  /* The Glow Effect */
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); 
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-hero .cta-button:hover {
+  background: #2563eb;
+  transform: translateY(-4px); /* Lift up */
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.6); /* Stronger glow */
+}
+
+/* Scroll text fade */
+.text-muted2 {
+  opacity: 0.6;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
 
 /* Why Section / Checkerboard Layout */
 .checker-grid {
