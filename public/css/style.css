@@ -57,6 +57,7 @@ h1 {
 }
 
 h2 {
+  font-family: 'Georgia', serif; /* Changed to Georgia */
   font-size: clamp(1.875rem, 4vw, 2.25rem);
   font-weight: 700;
   color: #1e40af; 
@@ -443,7 +444,6 @@ input:focus {
 }
 
 /* Carousel Section Styles */
-/* Carousel Section Styles */
 .section-learn {
   /* Gradient: Purple top-right to Blue bottom-left */
   background: linear-gradient(225deg, #f3e8ff 0%, #e0e7ff 50%, #d1d5db 100%);
@@ -533,6 +533,75 @@ input:focus {
   padding-bottom: 0.5rem; /* Tight spacing to end of section */
 }
 
+/* Who This Is For Section */
+.section-who {
+  text-align: center;
+  background-color: #f0f4ff; /* Match body color or keep it consistent */
+}
+
+.centered-leader {
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+  text-align: left;
+}
+
+.audience-card {
+  background-color: #ffffff; /* Different color inside the borders */
+  border: 2px solid #93c5fd;  /* Visible border */
+  border-radius: 1.25rem;     /* Slightly smooth/rounded corners */
+  padding: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.audience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1);
+}
+
+.audience-card h3 {
+  font-family: 'Georgia', serif; /* Consistent font for titles */
+  font-size: 1.35rem;
+  color: #1e3a8a;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.audience-card p {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 0; /* Clean up bottom space in cards */
+}
+
+.who-footer {
+  border-top: 1px solid rgba(147, 197, 253, 0.3);
+  padding-top: 3rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.who-footer p {
+  font-family: 'Georgia', serif; /* Apply to footer text if desired */
+  margin-bottom: 1rem;
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+/* Responsive adjustment for 4 columns */
+@media (min-width: 1024px) {
+  .audience-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 
 /* Footer */
 footer {
