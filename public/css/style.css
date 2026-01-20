@@ -623,6 +623,70 @@ input:focus {
   }
 }
 
+/* Lead Capture Section */
+.section-capture {
+  background-color: #f0f4ff; /* Pale blue of the rest of the site */
+}
+
+.form-card {
+  /* A refined, deep navy-slate blue */
+  background: #1e3a8a; 
+  padding: 4rem 2.5rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(147, 197, 253, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  margin: 0 auto;
+}
+
+/* Ensure headings and text inside the dark card are readable */
+.form-card h2 {
+  color: #ffffff; /* Pure white for the heading */
+  margin-top: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-card .text-muted {
+  color: #bfdbfe; /* Light blue-gray for descriptions (easier on eyes than pure white) */
+}
+
+.form-card .mt-small {
+  color: #93c5fd; /* Soft blue for the bottom small text */
+  opacity: 0.8;
+}
+
+/* Make inputs pop against the dark background */
+#lead-form {
+  max-width: 450px;
+  margin: 2.5rem auto 0 auto;
+}
+
+.form-card input {
+  background: #ffffff;
+  border: 2px solid transparent;
+  color: #1e293b;
+  padding: 1.2rem;
+}
+
+.form-card input:focus {
+  border-color: #60a5fa;
+  background: #ffffff;
+}
+
+/* Make the button extra prominent */
+.form-card .cta-primary {
+  background: #3b82f6; /* Brighter blue for the button */
+  color: white;
+  font-size: 1.1rem;
+  padding: 1.2rem;
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+}
+
+.form-card .cta-primary:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
 /* Footer */
 footer {
   border-top: 1px solid #93c5fd;
