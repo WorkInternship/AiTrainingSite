@@ -127,6 +127,12 @@ ul li {
   display: block;
 }
 
+.nav .logo:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
 .logo-text {
   font-size: 1.25rem;
   font-weight: 800;
@@ -226,6 +232,8 @@ input:focus {
   border-color: #3b82f6; 
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
 }
+
+
 
 
 /* ==========================================================================
@@ -339,6 +347,32 @@ input:focus {
   flex: 1;
 }
 
+/* Removes underline and keeps the color we set earlier */
+.trainer-name-link {
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.trainer-name-link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* Adds a subtle zoom effect to the image on hover to show it's clickable */
+.trainer-link {
+  display: block;
+  overflow: hidden;
+  border-radius: 1.5rem; /* Matches your image radius */
+}
+
+.trainer-link img {
+  transition: transform 0.3s ease;
+}
+
+.trainer-link:hover img {
+  transform: scale(1.03);
+}
+
 @media (min-width: 768px) {
   .trainer-row {
     flex-direction: row;
@@ -352,6 +386,8 @@ input:focus {
     text-align: center;
   }
 }
+
+
 
 /* Footer */
 footer {
