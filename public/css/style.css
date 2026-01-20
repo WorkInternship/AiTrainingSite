@@ -1,4 +1,7 @@
-/* ===== Base Reset ===== */
+/* ==========================================================================
+   1. GENERAL STYLES (Resets, Global Layout, Typography)
+   ========================================================================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +13,6 @@ html {
   overflow-x: hidden;
 }
 
-
 body {
   font-family: 'Inter', sans-serif;
   background-color: #f0f4ff; /* pale blue background */
@@ -19,42 +21,11 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== Layout ===== */
+/* Layout Containers */
 .section {
   padding: 5rem 1rem;
   width: 100%;
 }
-
-
-.section-hero {
-  background-image: url("../image/hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  position: relative;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-  text-align: center;
-  color: white;
-}
-
-.section-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 0;
-  pointer-events: none; /* ✅ allows clicks through */
-}
-
-.section-hero > * {
-  position: relative;
-  z-index: 1; /* ✅ content above overlay */
-}
-
-
-
 
 .container {
   max-width: 56rem;
@@ -72,174 +43,31 @@ body {
   text-align: center;
 }
 
-/* ===== Typography ===== */
+/* Global Typography */
 h1 {
-  font-size: clamp(2.5rem, 5vw, 3.75rem);
-  font-weight: 800;          /* Heavier weight feels "wider" */
+  font-size: clamp(2.5rem, 6vw, 4.5rem); 
+  font-weight: 800;
   color: #e0f2fe;
-  
-  /* The "Wide" Magic */
-  line-height: 1.0;          /* Brings lines closer together vertically */
-  letter-spacing: -0.02em;   /* Optional: tightens letters, or use 0.05em to spread them */
-  text-transform: uppercase; /* Uppercase letters often look wider and more stable */
-  
-  max-width: 900px;          /* Prevents the text from getting too narrow on huge screens */
-  margin-left: auto;
-  margin-right: auto;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+  max-width: 100%;
 }
 
 h2 {
   font-size: clamp(1.875rem, 4vw, 2.25rem);
   font-weight: 700;
-  color: #1e40af; /* Medium blue */
+  color: #1e40af; 
   margin-bottom: 1.5rem;
 }
 
-
-
 p {
   font-size: clamp(1rem, 2vw, 1.125rem);
-  color: #334155; /* Blue-gray text */
+  color: #334155;
   margin-bottom: 1rem;
 }
 
-.text-accent {
-  color: #3b82f6; /* Bright blue accent */
-}
-
-.text-muted {
-  color: #64748b; /* Muted blue-gray */
-}
-
-.text-sm {
-  font-size: 0.875rem;
-}
-
-/* ===== Glass UI ===== */
-.glass {
-  background: rgba(59, 130, 246, 0.05); /* Slight blue tint */
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  padding: 2rem;
-  border-radius: 1rem;
-}
-
-/* ===== Buttons ===== */
-.cta-button {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: #3b82f6; /* Bright blue */
-  color: #ffffff;
-  font-weight: 700;
-  border-radius: 0.75rem;
-  text-decoration: none;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.cta-button:hover {
-  background: #2563eb; /* Darker blue */
-  transform: translateY(-1px);
-}
-
-.cta-primary {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: #1e40af; /* Deep blue */
-  color: #ffffff;
-  font-weight: 700;
-  border-radius: 0.75rem;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.cta-primary:hover {
-  background: #1e3a8a; /* Slightly darker blue */
-  transform: translateY(-1px);
-}
-
-/* ===== Forms ===== */
-#lead-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;      /* This creates the uniform vertical space you want */
-  margin-top: 2rem;  /* Adds space between the text above and the first field */
-}
-
-input,
-button {
-  width: 100%;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  background: #e0f2fe; /* Very light blue */
-  border: 1px solid #93c5fd; /* Light blue border */
-  color: #1e3a8a; /* Dark blue text */
-  font-size: 1rem;
-  display: block; /* Ensures they behave as full-width blocks */
-}
-
-input::placeholder {
-  color: #64748b; 
-}
-
-input:focus {
-  outline: none;
-  border-color: #3b82f6; 
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
-}
-
-/* ===== Navigation ===== */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid #93c5fd;
-  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.1);
-  background: rgba(255, 255, 255, 0.9); /* Slightly transparent */
-  backdrop-filter: blur(10px);
-}
-
-.flex-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-
-.nav .logo img {
-  height: 32px;    /* 👈 Change this number to shrink or grow the logo */
-  width: auto;      /* Keeps the logo from looking stretched */
-  display: block;
-  transition: transform 0.2s ease; /* Adds a nice feel if you hover over it */
-}
-
-/* Optional: Make it slightly larger on big screens if you prefer */
-@media (min-width: 768px) {
-  .nav .logo img {
-    height: 38px; 
-  }
-}
-
-.nav a {
-  display: inline-block;
-  font-size: 0.875rem;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  background: #3b82f6;
-  color: #ffffff;
-  text-decoration: none;
-  transition: background 0.2s ease;
-}
-
-.nav a:hover {
-  background: #2563eb;
-}
-
-/* ===== Lists ===== */
 ul {
   list-style: disc inside;
   margin-bottom: 1rem;
@@ -250,71 +78,241 @@ ul li {
   margin-bottom: 0.5rem;
 }
 
-/* ===== Sections Backgrounds ===== */
-.section-bg-light {
-  background: #f0f9ff; /* Light blue background */
+/* Text Helpers */
+.text-accent { color: #3b82f6; }
+.text-muted { color: #64748b; }
+.text-muted2 { color: #ffffff; }
+.text-sm { font-size: 0.875rem; }
+
+/* Section Backgrounds */
+.section-bg-light { background: #f0f9ff; }
+.section-bg-dark { background: #e0f2fe; }
+
+
+/* ==========================================================================
+   2. UI COMPONENTS (Navigation, Buttons, Glass UI, Forms)
+   ========================================================================== */
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 1rem 0;
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
-.section-bg-dark {
-  background: #e0f2fe; /* Slightly darker blue */
+.nav-container {
+  width: 100%;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* ===== About Section Styling ===== */
-/* ===== Checkerboard Layout ===== */
+.nav .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.nav .logo img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 480px) {
+  .nav-container { padding: 0 1rem; }
+  .logo-text { font-size: 1.1rem; }
+}
+
+/* Buttons */
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #3b82f6;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.cta-primary {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #1e40af;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cta-primary:hover {
+  background: #1e3a8a;
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 0.6rem 1.25rem;
+  border-radius: 0.5rem;
+  background: #3b82f6;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+}
+
+/* Glass UI */
+.glass {
+  background: rgba(59, 130, 246, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+/* Forms */
+#lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+input, button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #e0f2fe;
+  border: 1px solid #93c5fd;
+  color: #1e3a8a;
+  font-size: 1rem;
+  display: block;
+}
+
+input::placeholder { color: #64748b; }
+
+input:focus {
+  outline: none;
+  border-color: #3b82f6; 
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+
+/* ==========================================================================
+   3. PAGE SECTIONS (Hero, Why, Trainer, Footer)
+   ========================================================================== */
+
+/* Hero Section */
+.section-hero {
+  background-image: url("../image/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  padding-top: 12rem;
+  padding-bottom: 12rem;
+  text-align: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  z-index: 1;
+}
+
+.section-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.container-hero {
+  max-width: 70rem;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.section-hero .cta-button { margin-top: 1rem; }
+
+/* Why Section / Checkerboard Layout */
 .checker-grid {
   display: grid;
-  grid-template-columns: 1fr; /* Default to single column (Mobile) */
-  gap: 3rem; /* Space between items */
+  grid-template-columns: 1fr;
+  gap: 3rem;
   margin-top: 2.5rem;
-  align-items: center; /* Vertically center text with images */
+  align-items: center;
 }
 
-/* Image styling */
 .why-img-wrapper img {
   width: 100%;
   height: auto;
-  border-radius: 1rem; /* Rounded corners */
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15); /* Soft blue shadow */
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
   object-fit: cover;
   display: block;
 }
 
-/* Desktop: 2 Columns */
-@media (min-width: 768px) {
-  .checker-grid {
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
-    gap: 4rem; /* Larger gap on desktop */
-  }
-}
-
-/* Adjust text spacing inside the blocks */
 .why-block h3 {
-  font-size: 1.5rem; /* Slightly larger heading */
+  font-size: 1.5rem;
   font-weight: 700;
   color: #1e3a8a;
   margin-bottom: 1rem;
 }
 
-.why-block p, 
-.why-block ul {
-  margin-bottom: 1rem;
+.why-block p, .why-block ul { margin-bottom: 1rem; }
+
+@media (min-width: 768px) {
+  .checker-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
 }
 
-/* ===== Trainer Section Specifics (Updated) ===== */
+/* Trainer Section */
 .trainer-row {
   display: flex;
-  flex-direction: column; /* Stacked for mobile */
+  flex-direction: column;
   gap: 2rem;
   margin-bottom: 2.5rem;
 }
 
-.trainer-img {
-  width: 100%;
-}
+.trainer-img { width: 100%; }
 
 .trainer-img img {
   width: 100%;
-  /* This makes the image shorter (Cinema style) so the bio fits better next to it */
   aspect-ratio: 16 / 9; 
   object-fit: cover;
   border-radius: 1.5rem;
@@ -322,50 +320,40 @@ ul li {
   display: block;
 }
 
-.trainer-bio {
-  width: 100%;
-}
+.trainer-bio { width: 100%; }
 
-/* Bottom Features List */
 .trainer-list {
   display: flex;
-  flex-direction: column; /* Stacked on mobile */
+  flex-direction: column;
   gap: 1.5rem;
   border-top: 1px solid rgba(147, 197, 253, 0.3);
   padding-top: 2rem;
   margin-top: 1rem;
-  list-style: none; /* Removes the dots for a cleaner row look */
+  list-style: none;
 }
 
 .trainer-list li {
   font-weight: 600;
   color: #1e40af;
   text-align: center;
-  flex: 1; /* Ensures equal spacing on desktop */
+  flex: 1;
 }
 
-/* Desktop Layout */
 @media (min-width: 768px) {
   .trainer-row {
-    flex-direction: row; /* Image and Bio side-by-side */
+    flex-direction: row;
     align-items: center; 
   }
-  
-  .trainer-img {
-    flex: 2; /* 2/3 width */
-  }
-
-  .trainer-bio {
-    flex: 1; /* 1/3 width */
-  }
-
+  .trainer-img { flex: 2; }
+  .trainer-bio { flex: 1; }
   .trainer-list {
-    flex-direction: row; /* 3 items side-by-side on desktop */
+    flex-direction: row;
     justify-content: space-between;
     text-align: center;
   }
 }
-/* ===== Footer ===== */
+
+/* Footer */
 footer {
   border-top: 1px solid #93c5fd;
   padding: 2.5rem 1rem;
