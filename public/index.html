@@ -137,19 +137,21 @@
 </section>
 
 <!-- WHAT I’LL LEARN -->
-<section class="section section-muted">
-  <div class="container">
+<section class="section section-learn">
+  <div class="container-carousel">
     <h2>What you’ll learn</h2>
 
-    <ul>
-      <li>How modern enterprises are using AI today to work smarter.</li>
-      <li>How to spot automation opportunities inside your own company.</li>
-      <li>Which AI productivity tools and workflows actually matter.</li>
-      <li>How to adopt AI ethics and safety realistically.</li>
-      <li>How to use AI as a competitive business advantage.</li>
-    </ul>
+    <div class="carousel-viewport">
+      <div class="carousel-track">
+        <div class="carousel-card active">How modern enterprises are using AI today to work smarter.</div>
+        <div class="carousel-card">How to spot automation opportunities inside your own company.</div>
+        <div class="carousel-card">Which AI productivity tools and workflows actually matter.</div>
+        <div class="carousel-card">How to adopt AI ethics and safety realistically.</div>
+        <div class="carousel-card">How to use AI as a competitive business advantage.</div>
+      </div>
+    </div>
 
-    <p class="text-muted">No coding. No buzzwords. Just clear, usable insight.</p>
+    <p class="text-muted carousel-footer">No coding. No buzzwords. Just clear, usable insight.</p>
   </div>
 </section>
 
@@ -200,13 +202,7 @@
   <p>&copy; 2026 MB9 AI Training</p>
 </footer>
 
-<script>
-document.getElementById('lead-form')?.addEventListener('submit', e => {
-  e.preventDefault();
-  alert('Thanks for registering your interest.');
-  e.target.reset();
-});
-</script>
+<script src="./js/index.js"></script>
 
 </body>
 </html>
