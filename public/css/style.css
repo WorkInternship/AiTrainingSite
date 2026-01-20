@@ -22,9 +22,9 @@ body {
 }
 
 /* Layout Containers */
-/* Layout Containers - Widened to reduce side space */
+/* --- Updated Section Padding --- */
 .section {
-  padding: 5rem 2rem; /* Increased side padding for mobile safety */
+  padding: 8rem 2rem; /* Increased from 5rem to 8rem for "Breathing Room" */
   width: 100%;
 }
 
@@ -64,10 +64,23 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
+/* --- Improved Readability Width --- */
+/* This ensures paragraphs don't stretch too far on big screens */
 p {
   font-size: clamp(1rem, 2vw, 1.125rem);
   color: #334155;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  max-width: 700px; /* The "Magic Number" for readability */
+}
+
+/* Center paragraphs that are inside centered containers */
+.container-narrow p, 
+.section-hero p, 
+.section-learn p,
+.why-solution p,
+.who-footer p {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 ul {
@@ -382,13 +395,29 @@ input:focus {
   align-items: center;
 }
 
+/* Branded Image Filter for Why Section */
+.why-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: #1e40af; /* The brand blue for the 'tint' */
+}
+
 .why-img-wrapper img {
-  width: 100%;
-  height: auto;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
-  object-fit: cover;
   display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* This blends the image with the blue background above */
+  mix-blend-mode: luminosity; 
+  opacity: 0.8;
+  transition: all 0.5s ease;
+}
+
+.why-img-wrapper:hover img {
+  mix-blend-mode: normal; /* Returns to full color on hover */
+  opacity: 1;
+  transform: scale(1.05);
 }
 
 .why-block h3 {
@@ -451,15 +480,42 @@ input:focus {
   margin-bottom: 2.5rem;
 }
 
-.trainer-img { width: 100%; }
+.trainer-img {
+  position: relative;
+  width: 280px; /* Fixed size for a professional headshot look */
+  height: 280px;
+  margin: 0 auto;
+}
 
 .trainer-img img {
   width: 100%;
-  aspect-ratio: 16 / 9; 
+  height: 100%;
   object-fit: cover;
-  border-radius: 1.5rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  display: block;
+  border-radius: 50%; /* Perfect Circle */
+  border: 4px solid #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  position: relative;
+}
+
+/* The "Orbit" ring behind the photo */
+.trainer-img::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 2px dashed #3b82f6;
+  border-radius: 50%;
+  z-index: 1;
+  animation: rotate 20s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .trainer-bio { width: 100%; }
@@ -632,20 +688,30 @@ input:focus {
 }
 
 .audience-card {
-  background-color: #ffffff; /* Different color inside the borders */
-  border: 2px solid #93c5fd;  /* Visible border */
-  border-radius: 1.25rem;     /* Slightly smooth/rounded corners */
-  padding: 2rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #ffffff;
+  /* Thin, elegant border */
+  border: 1px solid rgba(147, 197, 253, 0.3); 
+  border-radius: 1.5rem;
+  padding: 3rem 2rem; /* More internal padding */
+  
+  /* Very soft, modern drop shadow */
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+    0 10px 15px -3px rgba(147, 197, 253, 0.1);
+    
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers everything inside the card */
-  text-align: center;   /* Centers the heading and paragraph text */
+  align-items: center;
+  text-align: center;
 }
 
 .audience-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1);
+  transform: translateY(-8px); /* Lift higher */
+  border-color: #3b82f6;
+  box-shadow: 
+    0 20px 25px -5px rgba(59, 130, 246, 0.1), 
+    0 10px 10px -5px rgba(59, 130, 246, 0.04);
 }
 
 .audience-card h3 {
@@ -667,17 +733,31 @@ input:focus {
 }
 
 .audience-icon {
-  margin-bottom: 1.25rem;
+  width: 80px;
+  height: 80px;
+  background: #eff6ff; /* Very pale blue circle */
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
 }
 
 .audience-icon img {
-  width: 48px;  /* Standardized width */
-  height: 48px; /* Standardized height */
+  width: 40px; /* Uniform icon size */
+  height: 40px;
   object-fit: contain;
-  /* Optional: if your icons are blue, you can add a slight opacity or filter here */
+  /* This tints your black/grey icons to MB9 blue */
+  filter: sepia(100%) hue-rotate(190deg) saturate(500%); 
+}
+
+.audience-card:hover .audience-icon {
+  background: #3b82f6;
+}
+
+.audience-card:hover .audience-icon img {
+  filter: brightness(0) invert(1); /* Turns icon white on hover */
 }
 
 .who-footer {
