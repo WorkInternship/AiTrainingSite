@@ -75,9 +75,17 @@ body {
 /* ===== Typography ===== */
 h1 {
   font-size: clamp(2.5rem, 5vw, 3.75rem);
-  font-weight: 700;
-  color: #e0f2fe; /* Dark blue */
-  line-height: 1.2;
+  font-weight: 800;          /* Heavier weight feels "wider" */
+  color: #e0f2fe;
+  
+  /* The "Wide" Magic */
+  line-height: 1.0;          /* Brings lines closer together vertically */
+  letter-spacing: -0.02em;   /* Optional: tightens letters, or use 0.05em to spread them */
+  text-transform: uppercase; /* Uppercase letters often look wider and more stable */
+  
+  max-width: 900px;          /* Prevents the text from getting too narrow on huge screens */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h2 {
@@ -87,14 +95,6 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
-.section-hero .hero-subtext {
-  color: #e0f2fe;              /* soft light-blue */
-  font-size: 1.125rem;
-  max-width: 32rem;
-  margin: 1.5rem auto 2rem;
-  line-height: 1.7;
-  opacity: 0.95;
-}
 
 
 p {
@@ -208,10 +208,19 @@ input:focus {
   align-items: center;
 }
 
-.nav .logo {
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: #1e3a8a;
+
+.nav .logo img {
+  height: 32px;    /* 👈 Change this number to shrink or grow the logo */
+  width: auto;      /* Keeps the logo from looking stretched */
+  display: block;
+  transition: transform 0.2s ease; /* Adds a nice feel if you hover over it */
+}
+
+/* Optional: Make it slightly larger on big screens if you prefer */
+@media (min-width: 768px) {
+  .nav .logo img {
+    height: 38px; 
+  }
 }
 
 .nav a {
