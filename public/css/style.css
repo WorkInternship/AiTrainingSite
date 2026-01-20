@@ -51,7 +51,7 @@ h1 {
   line-height: 1.1;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem !important;
   max-width: 100%;
 }
 
@@ -76,6 +76,12 @@ ul {
 
 ul li {
   margin-bottom: 0.5rem;
+}
+
+/* Helper for the small scroll text */
+.mt-small {
+  margin-top: 2rem;
+  font-size: 0.9rem;
 }
 
 /* Text Helpers */
@@ -273,6 +279,17 @@ input:focus {
   z-index: 1;
 }
 
+/* Hero Sub-headline Styling */
+.hero-subtext {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: #e0f2fe; /* Light blue to match h1 */
+  font-weight: 400;
+  max-width: 800px;
+  margin: 0 auto 3rem auto; /* 3rem bottom margin creates the gap to the button */
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
 .section-hero .cta-button { margin-top: 1rem; }
 
 /* Why Section / Checkerboard Layout */
@@ -296,6 +313,42 @@ input:focus {
 .why-block h3 {
   font-size: 1.5rem;
   font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+}
+
+/* Why Solution Section - Gradient Border */
+.why-solution {
+  position: relative;
+  padding: 2rem;
+  margin-top: 4rem;
+  text-align: center;
+  background: #ffffff; /* Inner background color */
+  border-radius: 1.5rem;
+  z-index: 1;
+}
+
+.why-solution::before {
+  content: "";
+  position: absolute;
+  inset: 0; 
+  padding: 2px; /* 👈 This controls the thickness of your border */
+  border-radius: 1.5rem; 
+  
+  /* The Gradient Colors */
+  background: linear-gradient(to right, #3b82f6, #1e40af, #93c5fd); 
+  
+  /* This creates the border effect by masking the center */
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude; 
+  z-index: -1;
+}
+
+.why-solution h3 {
+  font-size: 1.75rem;
   color: #1e3a8a;
   margin-bottom: 1rem;
 }
