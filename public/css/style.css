@@ -149,6 +149,33 @@ ul li {
   letter-spacing: -0.02em;
 }
 
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #3b82f6; /* Tinted blue */
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #1e3a8a; /* Deep brand blue */
+  transform: translateY(-1px);
+}
+
+/* Responsive: Hide links on mobile to prevent overlap */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}
+
 @media (max-width: 480px) {
   .nav-container { padding: 0 1rem; }
   .logo-text { font-size: 1.1rem; }
