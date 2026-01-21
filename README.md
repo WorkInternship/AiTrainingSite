@@ -5,8 +5,8 @@ Practical AI training for Singapore-based business leaders. This project is a No
 ## 🛠 Tech Stack
 * **Backend:** Node.js, Express.js
 * **Frontend:** HTML5, CSS3, Vanilla JavaScript
-* **Database:** [Your Database Name, e.g., MongoDB Atlas]
-* **Hosting:** [Your Hosting Provider, e.g., Render]
+* **Database:** Neon DB
+* **Hosting:** Render
 
 ## 🚀 Quick Start
 
