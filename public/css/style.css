@@ -350,18 +350,22 @@ input:focus {
 
 /* 2. Typography Hierarchy */
 .section-hero h1 {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(3rem, 6vw, 5rem); /* Larger, more impact */
-  font-weight: 800; /* Extra Bold */
+  /* Font switched to Georgia with serif fallback */
+  font-family: 'Georgia', serif; 
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700; /* Georgia's max weight is usually 700 (Bold) */
   line-height: 1.1;
-  letter-spacing: -0.03em; /* Tighter tracking for modern look */
-  text-transform: none; /* Removed uppercase for a more human/premium feel */
+  letter-spacing: -0.01em; /* Serif fonts need slightly more room than sans-serif */
+  text-transform: none; 
   margin-bottom: 2rem !important;
   
-  /* Subtle text gradient to make it pop against dark bg */
+  /* Keeping your premium blue/white gradient */
   background: linear-gradient(to right, #ffffff, #bfdbfe);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  
+  /* Adding a very subtle text-shadow to help the serif edges pop against the mesh background */
+  text-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .hero-subtext {
@@ -376,25 +380,47 @@ input:focus {
 }
 
 /* 3. Premium CTA Button */
-.section-hero .cta-button {
-  display: inline-block;
-  padding: 1.25rem 2.75rem; /* Larger click area */
+.cta-premium {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 2.5rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
   font-size: 1.1rem;
-  font-weight: 600;
-  background: #3b82f6; /* Bright Blue */
-  color: #ffffff;
-  border-radius: 0.75rem; /* 12px rounded corners */
   text-decoration: none;
-  
-  /* The Glow Effect */
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); 
+  color: #1e3a8a; /* Deep blue text for contrast */
+  background: #e0f2fe; /* Pale blue background */
+  border-radius: 0.75rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
 }
 
-.section-hero .cta-button:hover {
-  background: #2563eb;
-  transform: translateY(-4px); /* Lift up */
-  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.6); /* Stronger glow */
+/* The Gradient Border Effect */
+.cta-premium::before {
+  content: "";
+  position: absolute;
+  inset: -2px; /* This creates the 2px border thickness */
+  z-index: -1;
+  background: linear-gradient(45deg, #3b82f6, #93c5fd, #1e40af);
+  border-radius: 0.85rem; /* Slightly larger than button radius */
+}
+
+/* Hover Effects */
+.cta-premium:hover {
+  background: #f0f9ff; /* Even lighter blue on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+}
+
+/* SVG Arrow Animation */
+.cta-premium svg {
+  transition: transform 0.3s ease;
+}
+
+.cta-premium:hover svg {
+  transform: translateX(5px);
 }
 
 /* Scroll text fade */
@@ -578,6 +604,68 @@ input:focus {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
   }
+}
+
+/* --- Testimonial Styling --- */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.testimonial-card {
+  background: #ffffff;
+  padding: 3rem 2.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(147, 197, 253, 0.2);
+  position: relative;
+  box-shadow: 0 10px 30px rgba(30, 64, 175, 0.03);
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.quote-icon {
+  font-family: 'Georgia', serif;
+  font-size: 5rem;
+  color: #3b82f6;
+  opacity: 0.2;
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  line-height: 1;
+}
+
+.testimonial-card p {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #1e293b;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.testimonial-author {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-author strong {
+  color: #1e3a8a;
+  font-size: 1rem;
+}
+
+.testimonial-author span {
+  color: #64748b;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
 }
 
 /* Trainer Section */
@@ -953,12 +1041,14 @@ input:focus {
   transform: translateY(-2px);
 }
 
-/* Footer */
-/* --- Enhanced Footer Styling --- */
+/* --- Footer: Dark Theme & Smaller Logo --- */
+
 .footer {
-  background: #ffffff;
+  /* Changed background to Deep Navy to match the Trust Bar theme */
+  background: #1e3a8a; 
   padding: 5rem 0 0 0;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff; /* Global white text for the footer */
 }
 
 .footer-container {
@@ -970,10 +1060,22 @@ input:focus {
   gap: 4rem;
 }
 
+/* Specific rule to reduce footer logo size */
+.footer-brand .logo img {
+  height: 24px; /* Reduced from 32px for a more refined look */
+  width: auto;
+}
+
+/* Ensure the MB9 text next to the logo is white */
+.footer-brand .logo-text {
+  color: #ffffff;
+}
+
 .footer-brand p {
   margin-top: 1.5rem;
   font-size: 0.95rem;
-  color: #64748b;
+  /* Light blue-gray for better readability on dark backgrounds */
+  color: #bfdbfe; 
   max-width: 320px;
 }
 
@@ -982,12 +1084,14 @@ input:focus {
 }
 
 .social-links a {
-  color: #1e3a8a;
-  transition: color 0.2s ease;
+  color: #ffffff; /* White icon by default */
+  opacity: 0.8;
+  transition: all 0.2s ease;
 }
 
 .social-links a:hover {
-  color: #3b82f6;
+  color: #3b82f6; /* MB9 Blue on hover */
+  opacity: 1;
 }
 
 .footer-links {
@@ -997,38 +1101,49 @@ input:focus {
 }
 
 .footer-links h4 {
-  color: #1e293b;
+  color: #ffffff; /* White heading */
   font-weight: 700;
   margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
 }
 
 .footer-links a {
   text-decoration: none;
-  color: #64748b;
+  color: #93c5fd; /* Muted light blue for links */
   font-size: 0.95rem;
   transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
-  color: #3b82f6;
+  color: #ffffff; /* Bright white on hover */
 }
 
 .back-to-top {
   text-decoration: none;
   font-weight: 600;
-  color: #1e3a8a;
+  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   transition: transform 0.2s ease;
+  /* Added a subtle button-like background to help it stand out */
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  width: fit-content;
 }
 
 .back-to-top:hover {
   transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .footer-bottom {
-  border-top: 1px solid #f1f5f9;
+  /* Darker shade for the bottom copyright bar */
+  background: rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding: 2rem 0;
 }
 
@@ -1039,7 +1154,14 @@ input:focus {
   display: flex;
   justify-content: space-between;
   font-size: 0.85rem;
-  color: #94a3b8;
+  /* Changed from #94a3b8 (grey) to a pale blue for visibility */
+  color: #bfdbfe; 
+}
+
+/* Added this to ensure all paragraphs inside the bottom bar inherit the color */
+.footer-bottom-container p {
+  color: #bfdbfe;
+  margin-bottom: 0; /* Cleans up spacing in the bottom bar */
 }
 
 /* Mobile Responsiveness for Footer */
@@ -1052,6 +1174,9 @@ input:focus {
   .footer-brand p {
     margin-left: auto;
     margin-right: auto;
+  }
+  .back-to-top {
+    margin: 0 auto;
   }
   .footer-bottom-container {
     flex-direction: column;
