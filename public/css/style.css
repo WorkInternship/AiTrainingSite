@@ -110,6 +110,8 @@ ul li {
 .section-bg-dark { background: #e0f2fe; }
 
 
+
+
 /* ==========================================================================
    2. UI COMPONENTS (Navigation, Buttons, Glass UI, Forms)
    ========================================================================== */
@@ -286,6 +288,19 @@ input:focus {
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
 }
 
+/* The initial hidden state */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* The state when it becomes visible */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 
 
@@ -388,6 +403,95 @@ input:focus {
   font-size: 0.85rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+/* Trust bar section */
+
+/* --- Hero to Trust Transition --- */
+.hero-divider {
+  position: relative;
+  /* Match this EXACTLY to your Trust Section background */
+  background-color: #1e3a8a; 
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  /* Push it down slightly to overlap the section below */
+  margin-bottom: -1px; 
+  z-index: 10;
+}
+
+.hero-divider svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+  /* This prevents the SVG from being 'cut off' by 1px */
+  transform: scale(1.01);
+  transform-origin: top;
+}
+
+.hero-divider .shape-fill {
+  /* Match this to the darkest part of your Hero gradient */
+  fill: #0f172a; 
+}
+
+/* --- Trust Bar Premium Styling --- */
+.trust-bar {
+  padding: 4rem 0 6rem 0;
+  background: #1e3a8a; /* Ensure this is the same as hero-divider */
+  text-align: center;
+  position: relative;
+  /* Pull it up 1px to 'swallow' any remaining gap */
+  margin-top: -1px; 
+}
+
+.trust-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  /* Changed color to a light blue so it's visible on dark navy */
+  color: #93c5fd; 
+  margin-bottom: 3rem;
+  display: block;
+  width: 100%;
+  /* Explicit centering */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logo-item {
+  font-weight: 800;
+  font-size: 1.1rem;
+  /* Changed color to white for visibility */
+  color: #ffffff; 
+  opacity: 0.6; /* Increased slightly for better baseline visibility */
+  filter: grayscale(100%);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.logo-item:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  /* Highlight color on hover */
+  color: #3b82f6;
+  background: rgba(255, 255, 255, 0.1); 
+  transform: translateY(-5px);
+}
+.logo-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem 5rem; /* Flexible gaps for mobile */
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Optional: Subtle fade-in for the whole bar */
+.trust-bar.reveal {
+  transition-delay: 0.2s;
 }
 
 /* Why Section / Checkerboard Layout */

@@ -112,6 +112,26 @@ window.closeModal = function() {
   if(modal) modal.classList.remove('active');
 }
 
+const observerOptions = {
+  threshold: 0.15 // Triggers when 15% of the element is visible
+};
+
+/* =========================================
+   REVEALING
+   ========================================= */
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.reveal').forEach((el) => {
+  observer.observe(el);
+});
+
 /* =========================================
    4. INITIALIZATION
    ========================================= */
